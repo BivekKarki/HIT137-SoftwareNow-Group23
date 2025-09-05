@@ -50,73 +50,70 @@ def draw_polygon_with_inward_koch_edges(t, sides, side_length, depth):
         t.left(turn)
 
 
-def main():
-    print("Inward Koch Polygon Fractal")
-    print("This makes shapes like crosses when recursion is higher!\n")
+print("Inward Koch Polygon Fractal")
+print("This makes shapes like crosses when recursion is higher!\n")
 
+# Get user input safely
 
-    # number of sides
-    while True:
-        try:
-            sides = int(input("Enter number of sides (>=3): "))
-            if sides < 3:
-                print("Polygon must have at least 3 sides!")
-                continue
-            break
-        except ValueError:
-            print("Please enter a valid integer.")
-
-    # side length
-    while True:
-        try:
-            length = float(input("Enter side length in pixels (>0): "))
-            if length <= 0:
-                print("Side length must be greater than 0!")
-                continue
-            break
-        except ValueError:
-            print("Please enter a valid number.")
-
-    # recursion depth
-    while True:
-        try:
-            depth = int(input("Enter recursion depth (>=0, recommended 0-6): "))
-            if depth < 0:
-                print("Depth cannot be negative!")
-                continue
-            if depth > 7:
-                print("Depth too high, setting to 7 (to avoid freezing).")
-                depth = 7
-            break
-        except ValueError:
-            print("Please enter a valid integer.")
-
-
+# number of sides
+while True:
     try:
-        screen = turtle.Screen()
-        screen.title("Inward Koch Polygon Fractal")
-        screen.bgcolor("white")
+        sides = int(input("Enter number of sides (>=3): "))
+        if sides < 3:
+            print("Polygon must have at least 3 sides!")
+            continue
+        break
+    except ValueError:
+        print("Please enter a valid integer.")
 
-        # make turtle
-        t = turtle.Turtle()
-        t.speed(0)        
-        t.hideturtle()    
-        t.pensize(1)
-        t.color("black")
+# side length
+while True:
+    try:
+        length = float(input("Enter side length in pixels (>0): "))
+        if length <= 0:
+            print("Side length must be greater than 0!")
+            continue
+        break
+    except ValueError:
+        print("Please enter a valid number.")
 
-        # draw fractal polygon
-        draw_polygon_with_inward_koch_edges(t, sides, length, depth)
+# recursion depth
+while True:
+    try:
+        depth = int(input("Enter recursion depth (>=0, recommended 0-6): "))
+        if depth < 0:
+            print("Depth cannot be negative!")
+            continue
+        if depth > 7:
+            print("Depth too high, setting to 7 (to avoid freezing).")
+            depth = 7
+        break
+    except ValueError:
+        print("Please enter a valid integer.")
 
-        print("Done! Click the window to close.")
-        screen.exitonclick()
+# for error handling, using try except
+try:
+    screen = turtle.Screen()
+    screen.title("Inward Koch Polygon Fractal")
+    screen.bgcolor("white")
 
-    except turtle.Terminator:
-        print("Turtle graphics window closed unexpectedly.")
-        sys.exit(1)
+    # make turtle
+    t = turtle.Turtle()
+    t.speed(0)        
+    t.hideturtle()    
+    t.pensize(1)
+    t.color("black")
 
-    except RecursionError:
-        print("Error: Recursion depth too high for Python.")
-        sys.exit(1)
+    # draw fractal polygon
+    draw_polygon_with_inward_koch_edges(t, sides, length, depth)
 
-if __name__ == "__main__":
-    main()
+    print("Done! Click the window to close.")
+    screen.exitonclick()
+
+except turtle.Terminator:
+    print("Turtle graphics window closed unexpectedly.")
+    sys.exit(1)
+
+except RecursionError:
+    print("Error: Recursion depth too high for Python.")
+    sys.exit(1)
