@@ -50,16 +50,10 @@ def draw_polygon_with_inward_koch_edges(t, sides, side_length, depth):
         t.left(turn)
 
 
-# -------------------------------
-# Program starts here
-# -------------------------------
 
 print("Inward Koch Polygon Fractal")
 print("This makes shapes like crosses when recursion is higher!\n")
 
-# -------------------------------
-# Get user input safely
-# -------------------------------
 
 # number of sides
 while True:
@@ -97,9 +91,7 @@ while True:
     except ValueError:
         print("Please enter a valid integer.")
 
-# -------------------------------
-# Setup turtle screen
-# -------------------------------
+
 try:
     screen = turtle.Screen()
     screen.title("Inward Koch Polygon Fractal")
